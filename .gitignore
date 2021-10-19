@@ -1,0 +1,11 @@
+# vscode ide, user configs...
+.vscode
+
+# terraform things
+terraform/*.tfstate*
+terraform/.terraform.lock.hcl
+terraform/.terraform
+
+# keys to access the instances via ssh
+terraform_oracle
+terraform_oracle.pub
