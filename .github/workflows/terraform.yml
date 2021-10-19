@@ -17,11 +17,3 @@ jobs:
       - id: validate
         working-directory: terraform
         run: terraform validate
-
-      - id: generate-private-key
-        working-directory: terraform
-        run: openssl genrsa -out oci_api_key.pem 2048
-
-      - id: generate-public-key
-        working-directory: terraform
-        run: openssl rsa -pubout -in oci_api_key.pem -out oci_api_key_public.pem
