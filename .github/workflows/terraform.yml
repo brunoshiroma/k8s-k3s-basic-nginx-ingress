@@ -18,6 +18,14 @@ jobs:
         working-directory: terraform
         run: terraform validate
 
+      - id: generate-private-key
+        working-directory: terraform
+        run: openssl genrsa -out oci_api_key.pem 2048
+
+      - id: generate-private-key
+        working-directory: terraform
+        run: openssl rsa -pubout -in oci_api_key.pem -out oci_api_key_public.pem
+
       - id: plan
         working-directory: terraform
         run: terraform plan
@@ -26,10 +34,10 @@ jobs:
           TF_VAR_compartment_ocid: ocid1.tenancy.oc1..XXXX
           TF_VAR_user_ocid: ocid1.user.oc1..YYYY
           TF_VAR_fingerprint: AA:BB:XXXX
-          TF_VAR_private_key_path: FILE.pem
+          TF_VAR_private_key_path: oci_api_key
           TF_VAR_vm_image: ocid1.image.oc1.sa-saopaulo-1.ZZZZ
           TF_VAR_region: sa-saopaulo-1
           TF_VAR_subnet_id: ocid1.subnet.oc1.sa-saopaulo-1.NNNN
           TF_VAR_ssh_private_key_file: KEY_FILE
           TF_VAR_ssh_public_key: ssh-ed25519 XXXXX dummy@email.com
-          TF_VAR_private_key_password: PASSWORD
+          TF_VAR_private_key_password:
