@@ -12,7 +12,10 @@ variable "private_key_path" {
 
 variable "ssh_public_key" {
 }
-    
+
+variable "ssh_private_key_file" {
+}
+
 variable "compartment_ocid" { #if you uses the root, ocid is the same of tenancy_ocid
 }
 
